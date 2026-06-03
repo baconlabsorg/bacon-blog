@@ -12,5 +12,5 @@ Bahnhofstrasse 19a
 Germany
 
 **Contact**
-hellog@baconlabs.org
+hello@baconlabs.org
 
