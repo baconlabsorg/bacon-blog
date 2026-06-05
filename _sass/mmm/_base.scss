@@ -1,6 +1,5 @@
 @use "variables" as *;
 @use "mixins" as *;
-@use "sass:color";
 
 body, h1, h2, h3, h4, h5, h6,
 p, blockquote, pre, hr,
@@ -11,8 +10,8 @@ dl, dd, ol, ul, figure {
 
 body {
   font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
-  color: $text-color;
-  background-color: $background-color;
+  color: var(--fg);
+  background-color: var(--bg);
   -webkit-text-size-adjust: 100%;
   -webkit-font-feature-settings: "kern" 1;
      -moz-font-feature-settings: "kern" 1;
@@ -63,11 +62,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: $brand-color;
+  color: var(--accent);
   text-decoration: none;
 
   &:hover {
-    color: $text-color;
+    color: var(--link-hover);
     text-decoration: underline;
   }
 
@@ -81,8 +80,8 @@ a {
 }
 
 blockquote {
-  color: $grey-color;
-  border-left: 4px solid $grey-color-light;
+  color: var(--fg);
+  border-left: 4px solid var(--border-light);
   padding-left: calc(#{$spacing-unit} / 2);
   @include relative-font-size(1.125);
   letter-spacing: -1px;
@@ -112,7 +111,7 @@ blockquote {
   width: 16px;
   height: 16px;
   display: inline-block;
-  fill: #{$grey-color};
+  fill: var(--fg);
   padding-right: 5px;
   vertical-align: text-top;
 }
@@ -127,23 +126,23 @@ table {
   margin-bottom: $spacing-unit;
   width: 100%;
   text-align: $table-text-align;
-  color: color.adjust($text-color, $lightness: 18%);
+  color: var(--table-text);
   border-collapse: collapse;
-  border: 1px solid $grey-color-light;
+  border: 1px solid var(--border-light);
   tr {
     &:nth-child(even) {
-      background-color: color.adjust($grey-color-light, $lightness: 6%);
+      background-color: var(--table-row-even-bg);
     }
   }
   th, td {
     padding: calc(#{$spacing-unit} / 3) calc(#{$spacing-unit} / 2);
   }
   th {
-    background-color: color.adjust($grey-color-light, $lightness: 3%);
-    border: 1px solid color.adjust($grey-color-light, $lightness: -4%);
-    border-bottom-color: color.adjust($grey-color-light, $lightness: -12%);
+    background-color: var(--table-th-bg);
+    border: 1px solid var(--table-th-border);
+    border-bottom-color: var(--table-th-border-b);
   }
   td {
-    border: 1px solid $grey-color-light;
+    border: 1px solid var(--border-light);
   }
 }

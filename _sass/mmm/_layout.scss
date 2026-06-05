@@ -3,7 +3,7 @@
 
 .site-header {
   padding: 14px 0;
-  border-bottom: 1px solid rgba(192, 130, 162, 0.2);
+  border-bottom: 1px solid var(--border-brand);
 
   .wrapper {
     display: flex;
@@ -23,11 +23,11 @@
 
   &,
   &:visited {
-    color: $grey-color-dark;
+    color: var(--fg-strong);
   }
 
   &:hover {
-    color: $grey-color-dark;
+    color: var(--fg-strong);
     text-decoration: none;
   }
 }
@@ -48,20 +48,35 @@
   }
 
   .page-link {
-    color: $text-color;
+    color: var(--fg);
     line-height: $base-line-height;
     text-decoration: none;
 
     &:hover {
-      color: $brand-color;
+      color: var(--accent);
       text-decoration: underline;
     }
   }
 }
 
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--fg-muted);
+  cursor: pointer;
+  font-size: $small-font-size;
+  padding: 0 2px;
+  line-height: 1;
+  font-family: $base-font-family;
+
+  &:hover {
+    color: var(--fg);
+  }
+}
+
 .site-footer {
   padding: $spacing-unit 0;
-  border-top: 1px solid rgba(192, 130, 162, 0.2);
+  border-top: 1px solid var(--border-brand);
 }
 
 .footer-heading {
@@ -77,7 +92,7 @@
 
 .footer-col-wrapper {
   @include relative-font-size(0.9375);
-  color: $grey-color;
+  color: var(--fg);
   display: flex;
   gap: $spacing-unit;
   flex-wrap: wrap;
@@ -106,26 +121,26 @@
   list-style: none;
 
   > li {
-    border-left: 3px solid $brand-color;
+    border-left: 3px solid var(--accent);
     padding: 18px 0 18px 20px;
     margin-bottom: 8px;
 
     &:hover {
-      border-color: $text-color;
+      border-color: var(--fg);
     }
   }
 }
 
 .post-meta {
   font-size: $small-font-size;
-  color: $grey-color;
+  color: var(--fg);
   display: block;
   margin-bottom: 4px;
 }
 
 .post-description {
   @include relative-font-size(0.875);
-  color: $grey-color;
+  color: var(--fg);
   margin: 0;
   line-height: 1.5;
 }
@@ -156,7 +171,7 @@
   line-height: 1.75;
 
   strong {
-    color: $grey-color-dark;
+    color: var(--fg-strong);
     font-weight: $base-font-weight;
   }
 
@@ -166,7 +181,7 @@
 
   hr {
     border: none;
-    border-top: 1px solid $grey-color-light;
+    border-top: 1px solid var(--border-light);
     width: 50%;
     margin: calc(#{$spacing-unit} * 1.75) auto;
   }

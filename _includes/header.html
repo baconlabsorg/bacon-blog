@@ -5,9 +5,9 @@
     {%- assign page_paths = site.header_pages | default: default_paths -%}
     <a class="site-title" rel="author" href="{{ "/" | relative_url }}"><img src="{{ "/assets/logos/carrot.svg" | relative_url }}" alt="carrot" class="site-logo"> the bacon roll</a>
 
-    {%- if page_paths -%}
-      <nav class="site-nav">
-        <div class="trigger">
+    <nav class="site-nav">
+      <div class="trigger">
+        {%- if page_paths -%}
           {%- for path in page_paths -%}
             {%- assign my_page = site.pages | where: "path", path | first -%}
             {%- if my_page.title -%}
@@ -15,8 +15,22 @@
             {%- endif -%}
           {%- endfor -%}
           <a class="page-link" href="{{ "/feed.xml" | relative_url }}">RSS</a>
-        </div>
-      </nav>
-    {%- endif -%}
+        {%- endif -%}
+        <button class="theme-toggle" id="theme-toggle" title="toggle dark mode" aria-label="toggle dark mode">◐</button>
+      </div>
+    </nav>
   </div>
 </header>
+<script>
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  var html = document.documentElement;
+  btn.textContent = html.dataset.theme === 'dark' ? '◑' : '◐';
+  btn.addEventListener('click', function() {
+    var next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+    html.dataset.theme = next;
+    localStorage.setItem('bl-theme', next);
+    btn.textContent = next === 'dark' ? '◑' : '◐';
+  });
+}());
+</script>
