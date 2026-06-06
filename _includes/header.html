@@ -29,8 +29,19 @@
   btn.addEventListener('click', function() {
     var next = html.dataset.theme === 'dark' ? 'light' : 'dark';
     html.dataset.theme = next;
-    localStorage.setItem('bl-theme', next);
+    var sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if ((next === 'dark') === sysDark) {
+      localStorage.removeItem('bl-theme');
+    } else {
+      localStorage.setItem('bl-theme', next);
+    }
     btn.textContent = next === 'dark' ? '◑' : '◐';
+  });
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+    if (!localStorage.getItem('bl-theme')) {
+      html.dataset.theme = e.matches ? 'dark' : 'light';
+      btn.textContent = e.matches ? '◑' : '◐';
+    }
   });
 }());
 </script>
